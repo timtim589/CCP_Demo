@@ -1,0 +1,143 @@
+[
+    {
+        "type": "Microsoft.SecurityInsights/dataConnectors",
+        "apiVersion": "2022-10-01-preview",
+        "name": "1Password_Audit_events",
+        "kind": "RestApiPoller",
+        "properties": {
+            "connectorDefinitionName": "1PasswordCCP",
+            "dataType": "OnePasswordAuditEvents_CL",
+            "dcrConfig": {
+                "streamName": "Custom-OnePasswordEvents",
+                "dataCollectionEndpoint": "{{dataCollectionEndpoint}}",
+                "dataCollectionRuleImmutableId": "{{dataCollectionRuleImmutableId}}"
+            },
+            "auth": {
+                "type": "APIKey",
+                "ApiKey": "{{ApiKey}}",
+                "ApiKeyName": "Authorization",
+                "ApiKeyIdentifier": "Bearer"
+            },
+            "request": {
+                "apiEndpoint": "{{BaseUrl}}/api/v1/auditevents",
+                "httpMethod": "Post",
+                "queryWindowInMin": 5,
+                "queryTimeFormat": "yyyy-MM-ddTHH:mm:ssZ",
+                "rateLimitQps": 1,
+                "retryCount": 3,
+                "timeoutInSeconds": 60,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "queryParametersTemplate": "{\"limit\": 1000, \"start_time\": \"{_QueryWindowStartTime}\", \"end_time\": \"{_QueryWindowEndTime}\" }",
+                "isPostPayloadJson": true
+            },
+            "response": {
+                "format": "json",
+                "eventsJsonPaths": [
+                    "$.items"
+                ]
+            },
+            "paging": {
+                "pagingType": "NextPageToken",
+                "nextPageParaName": "cursor",
+                "nextPageTokenJsonPath": "$.cursor",
+                "hasNextFlagJsonPath": "$.has_more"
+            }
+        }
+    },
+    {
+        "type": "Microsoft.SecurityInsights/dataConnectors",
+        "apiVersion": "2022-10-01-preview",
+        "name": "1Password_SignIn_events",
+        "kind": "RestApiPoller",
+        "properties": {
+            "connectorDefinitionName": "1PasswordCCP",
+            "dataType": "OnePasswordSignInEvents_CL",
+            "dcrConfig": {
+                "streamName": "Custom-OnePasswordEvents",
+                "dataCollectionEndpoint": "{{dataCollectionEndpoint}}",
+                "dataCollectionRuleImmutableId": "{{dataCollectionRuleImmutableId}}"
+            },
+            "auth": {
+                "type": "APIKey",
+                "ApiKey": "{{ApiKey}}",
+                "ApiKeyName": "Authorization",
+                "ApiKeyIdentifier": "Bearer"
+            },
+            "request": {
+                "apiEndpoint": "{{BaseUrl}}/api/v1/signinattempts",
+                "httpMethod": "Post",
+                "queryWindowInMin": 5,
+                "queryTimeFormat": "yyyy-MM-ddTHH:mm:ssZ",
+                "rateLimitQps": 1,
+                "retryCount": 3,
+                "timeoutInSeconds": 60,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "queryParametersTemplate": "{\"limit\": 1000, \"start_time\": \"{_QueryWindowStartTime}\", \"end_time\": \"{_QueryWindowEndTime}\" }",
+                "isPostPayloadJson": true
+            },
+            "response": {
+                "format": "json",
+                "eventsJsonPaths": [
+                    "$.items"
+                ]
+            },
+            "paging": {
+                "pagingType": "NextPageToken",
+                "nextPageParaName": "cursor",
+                "nextPageTokenJsonPath": "$.cursor",
+                "hasNextFlagJsonPath": "$.has_more"
+            }
+        }
+    },
+    {
+        "type": "Microsoft.SecurityInsights/dataConnectors",
+        "apiVersion": "2022-10-01-preview",
+        "name": "1Password_ItemUsage_events",
+        "kind": "RestApiPoller",
+        "properties": {
+            "connectorDefinitionName": "1PasswordCCP",
+            "dataType": "OnePasswordItemUsageEvents_CL",
+            "dcrConfig": {
+                "streamName": "Custom-OnePasswordEvents",
+                "dataCollectionEndpoint": "{{dataCollectionEndpoint}}",
+                "dataCollectionRuleImmutableId": "{{dataCollectionRuleImmutableId}}"
+            },
+            "auth": {
+                "type": "APIKey",
+                "ApiKey": "{{ApiKey}}",
+                "ApiKeyName": "Authorization",
+                "ApiKeyIdentifier": "Bearer"
+            },
+            "request": {
+                "apiEndpoint": "{{BaseUrl}}/api/v1/itemusages",
+                "httpMethod": "Post",
+                "queryWindowInMin": 5,
+                "queryTimeFormat": "yyyy-MM-ddTHH:mm:ssZ",
+                "rateLimitQps": 1,
+                "retryCount": 3,
+                "timeoutInSeconds": 60,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "queryParametersTemplate": "{\"limit\": 1000, \"start_time\": \"{_QueryWindowStartTime}\", \"end_time\": \"{_QueryWindowEndTime}\" }",
+                "isPostPayloadJson": true
+            },
+            "response": {
+                "format": "json",
+                "eventsJsonPaths": [
+                    "$.items"
+                ]
+            },
+            "paging": {
+                "pagingType": "NextPageToken",
+                "nextPageParaName": "cursor",
+                "nextPageTokenJsonPath": "$.cursor",
+                "hasNextFlagJsonPath": "$.has_more"
+            }
+        }
+    }
+]

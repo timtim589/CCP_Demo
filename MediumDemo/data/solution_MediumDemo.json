@@ -1,15 +1,13 @@
 {
-    "Name": "1Password CCP",
+    "Name": "MediumDemo",
     "Author": "Tim Groothuis",
     "Logo": "<img src=\"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Logos/1password.svg\" width=\"75px\" height=\"75px\">",
     "Description": "A demo solution for a medium article about the CCP",
     "Data Connectors": [
-      "Data Connectors/1Password_CCP/dataConnectorDefinition.json"
+        "Data Connectors/1Password_CCP/connectorDefinition.json"
     ],
-    "BasePath": "C:\\GitHub\\Azure-Sentinel\\Solutions\\1Password CCP",
+    "BasePath": "C:\\GitHub\\Azure-Sentinel\\Solutions\\MediumDemo",
     "Version": "3.0.0",
     "Metadata": "SolutionMetadata.json",
-    "TemplateSpec": true,
-    "Is1Pconnector": false
-  }
-  
+    "TemplateSpec": false
+}

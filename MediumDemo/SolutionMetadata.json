@@ -1,0 +1,19 @@
+{
+    "publisherId": "test",
+    "offerId": "test",
+    "firstPublishDate": "2025-04-28",
+    "providers": [
+        "test"
+    ],
+    "categories": {
+        "domains": [
+            "Security - Network"
+        ]
+    },
+    "support": {
+        "name": "Tim Groothuis",
+        "email": "test@example.com",
+        "tier": "Partner",
+        "link": "https://www.example.com"
+    }
+}

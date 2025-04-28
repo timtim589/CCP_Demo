@@ -12,13 +12,13 @@ to allow packaging using the Sentinel `CreateSolutionV3` tool and can largely be
 - The `Data Connectors` folder contains the actual templates of the CCP connector. 
 
 The CCP connector consists of 4 templates:
-- A `dataConnectorDefinition.json` file, which serves as the GUI.
-- A `dataConnectorPoller.json` file, which serves as the definition of the API of the remote system,
+- A `connectorDefinition.json` file, which serves as the GUI.
+- A `PollingConfig.json` file, which serves as the definition of the API of the remote system,
 the system we want to onboard.
-- A `dcr.json` file, the data collection rule which will handle the data retrieved by the poller.
+- A `DCR.json` file, the data collection rule which will handle the data retrieved by the poller.
 It supports all the features normal DCR's support, so there are multiple roads to Rome.
 In this case, I went with a simple catch-all stream and some simple parsing based on unique
 properties, but you could very well provide each poller with it's own, distinct stream.
-- A `table.json` file, containing the 3 tables expected by the DCR.
+- A `Table.json` file, containing the 3 tables expected by the DCR.
 
 
